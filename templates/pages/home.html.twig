@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+ 
+<div class="jumbotron text-center">
+    <h1>Bonjour MOUHAMADOU AFISS DIA Bienvenu !</h1>
+    <p>Instead of defining routes in the controller classes, you can define them in a separate YAML, XML or PHP <br>file. The main advantage is that they don't require any extra dependency. 
+    The main drawback is that you<br> have to work with multiple files when checking the routing of some controller action</p>
+</div>
+<div class="container">
+<h2>Les derniers Biens</h2>
+    <div class="row flex">
+        {% for acheter in achats %}
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            <a href="#">{{acheter.title}} <a/>
+                        </h5> 
+                        <p class="card-text">{{acheter.city}} ({{acheter.postalCode}}) </p>
+                        <div class="text-primary" >{{ acheter.price | number_format(0,'',' ') }} FCFA</div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
