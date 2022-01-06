@@ -1,0 +1,58 @@
+{% extends 'base.html.twig' %}
+
+{% block title  acheter.title %}
+
+{% block body %}
+ 
+<div class="container mt-4">
+    <div class=" row ">
+        <div class="col-md-8">
+
+        </div>
+
+        <div>
+        <h1>{{ acheter.title }}</h1>
+        <h2> {{acheter.rooms }} pieces - {{ acheter.surface }} m°2 </h2>
+        <div class=" text-primary" style=" font-size: 4rem; font-weight: bold; "> {{acheter.formattedPrice }} FCFA</div>
+        <a href="#" class="btn btn-primary ">Contacter l'agence</a>
+        </div>
+
+    </div>
+  <p>
+    {{ acheter.description | nl2br }}   
+  </p>
+    <div class="row>
+        <div class="col-md-8">
+            <h2>Caractéristiques : </h2>
+            <table class="table table-striped">
+                <tr>
+                    <td> Surfacee Habitable </td>
+                    <td> {{ acheter.surface }} m°2 </td>
+                </tr>
+                <tr>
+                    <td> Piéces </td>
+                    <td> {{ acheter.rooms }} </td>
+                </tr>
+                <tr>
+                    <td>Chambres</td>
+                    <td> {{ acheter.bedrooms }} </td>
+                </tr>
+                <tr>
+                    <td> Etages </td>
+                    <td> {{ acheter.floor }} </td>
+                </tr>
+                <tr>
+                    <td> Chauffage </td>
+                    <td> {{ acheter.heatType}} </td>
+                </tr>
+
+            </table>
+        </div>
+        <div class="col-md-4">
+            <h2>Les Spécificités </h2>
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

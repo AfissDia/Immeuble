@@ -15,10 +15,10 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="#">{{acheter.title}} <a/>
+                            <a href="{{path('acheter.show', {id:acheter.id, slug:acheter.slug}) }}">{{acheter.title}} <a/>
                         </h5> 
                         <p class="card-text">{{acheter.city}} ({{acheter.postalCode}}) </p>
-                        <div class="text-primary" >{{ acheter.price | number_format(0,'',' ') }} FCFA</div>
+                        <div class="text-primary" style="font-weight:bold"; font-size:2rem; >{{ acheter.formattedPrice }} FCFA</div>
                     </div>
                 </div>
             </div>

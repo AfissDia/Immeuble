@@ -61,4 +61,24 @@ class AcheterController extends AbstractController
 			'current_menu' => 'achats'
 		]);
 	}
+
+	/**
+ * @Route("/biens/{slug}-{id}", name="acheter.show", requirements={"slug": "[a-z0-9\-]*" })
+ * @param Acheter $acheter
+ * @return Response 
+ */
+	public function show(Acheter $acheter, string $slug): Response
+	{
+		if ($acheter->getSlug() !== $slug){
+			
+		return $this->redirectToRoute('acheter.show', [
+			'id'=> $acheter->getId(),
+			'slug'=>$acheter->getSlug()
+		],301);
+		}
+		//$acheter=$this->repository->find($id);
+		return $this->render('acheter/show.html.twig',[
+			'acheter'=>$acheter,
+			'current_menu' => 'achats' ]);
+	}
 }

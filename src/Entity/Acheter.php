@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\AcheterRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Cocur\Slugify\Slugify;
 
 /**
  * @ORM\Entity(repositoryClass=AcheterRepository::class)
@@ -11,8 +12,8 @@ use Doctrine\ORM\Mapping as ORM;
 class Acheter
 {
     const HEAT = [
-        0=>'electric',
-        1=>'gag'
+        0=>'Electrique',
+        1=>'Gag'
     ];
 
     /**
@@ -26,6 +27,7 @@ class Acheter
      * @ORM\Column(type="string", length=255)
      */
     private $title;
+
 
     /**
      * @ORM\Column(type="text", nullable=true)
@@ -109,6 +111,15 @@ class Acheter
         return $this;
     }
 
+     public function getSlug(): string
+    {
+        //$slugify = new Slugify();
+        
+        return (new Slugify())->slugify($this->title);
+      
+    }
+    
+
     public function getDescription(): ?string
     {
         return $this->description;
@@ -180,6 +191,11 @@ class Acheter
 
         return $this;
     }
+    public function getFormattedPrice():string
+
+    {
+        return number_format($this->price,0,'',' ');
+    }
 
     public function getHeat(): ?int
     {
@@ -191,6 +207,10 @@ class Acheter
         $this->heat = $heat;
 
         return $this;
+    }
+    public function heatType(): string
+    {
+        return self::HEAT[$this->heat ];
     }
 
     public function getAdress(): ?string
